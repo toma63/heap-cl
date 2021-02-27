@@ -68,14 +68,9 @@
 		      (setq parent-pointer second-child-pointer))
 		    (return-from yank popped-element)))))))))
 
-(defun swap-vector-values (v pos1 pos2)
+(defmacro swap-vector-values (v pos1 pos2)
   "swap the values at the two positions in vector v"
-  (let ((tmp (aref v pos1)))
-    (setf (aref v pos1) (aref v pos2))
-    (setf (aref v pos2) tmp)
-    ))
-
-
+  `(rotatef (aref ,v ,pos1) (aref ,v ,pos2)))
 
 
 
